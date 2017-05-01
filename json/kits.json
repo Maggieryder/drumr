@@ -1,0 +1,22 @@
+[
+  {
+    "name":"Feelin Kit",
+    "path":"./triton/FeelinKit/",
+    "voices": [
+        {"name":"kick", "smple":"FK_BD_08.wav", "prettyname":"KICK"},
+        {"name":"snr", "smple":"FK_SNR_03.wav", "prettyname":"SNARE"},
+        {"name":"hh", "smple":"FK_HH_03.wav", "prettyname":"HIHAT"},
+        {"name":"ohh", "smple":"FK_CYM_03.wav", "prettyname":"OPEN HIHAT"}
+    ]
+  },
+  {
+    "name":"Wild Soul Kit",
+    "path":"./triton/WildSoulKit/",
+    "voices": [
+      {"name":"kick", "smple":"WSK_BD_03.wav", "prettyname":"KICK"},
+      {"name":"snr", "smple":"WSK_SNR_08.wav", "prettyname":"SNARE"},
+      {"name":"hh", "smple":"WSK_HH_03.wav", "prettyname":"HIHAT"},
+      {"name":"ohh", "smple":"WSK_CYM_03.wav", "prettyname":"OPEN HIHAT"}
+    ]
+  }
+]

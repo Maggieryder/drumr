@@ -1,0 +1,187 @@
+
+input {
+
+}
+:focus {
+  outline: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  box-sizing: border-box;
+  box-shadow:none;
+  border-color:transparent;
+}
+input[type=range] {
+  -webkit-appearance: none;
+  /*overflow:hidden;*/
+  border-radius: 0px;
+  width: 100%;
+  height: 5px;
+  background-image:-webkit-linear-gradient(left, #CBE86B 0%,#CBE86B 50%,#333 50%,#333 100%);
+  /*background: rgba(0,0,0,0);*/
+  margin: 0 10px;
+  cursor: pointer;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 120%;
+  -webkit-appearance: none;
+  height: 5px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+  border-radius: 0px;
+  border: 0px solid rgba(0, 0, 0, 0);
+  background: -webkit-linear-gradient(left, #CBE86B 0%,#CBE86B 50%,#333 50%,#333 100%);
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0px #333333, 0px 0px 0px #404040;
+  /*box-shadow: -50px 0 0 50px #CBE86B;*/
+  border: 1px solid rgba(51, 51, 51, 0);
+  height: 40px;
+  width: 30px;
+  border-radius: 0px;
+  background:rgba(0,0,0,0); /*rgba(0,0,0,0);#CBE86B;*/
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -17.5px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  /*background: #404040;*/
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+  border-radius: 0px;
+  border: 0px solid rgba(0, 0, 0, 0);
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]:focus::-moz-range-track{
+  outline:none!important;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 0px 0px 0px #333333, 0px 0px 0px #404040;
+  border: 0px solid rgba(51, 51, 51, 0);
+  height: 40px;
+  width: 5px;
+  border-radius: 0px;
+  background:rgba(0,0,0,0);/*#CBE86B;*/
+  cursor: pointer;
+
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #262626;
+  border: 0px solid rgba(0, 0, 0, 0);
+  border-radius: 0px;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+}
+input[type=range]::-ms-fill-upper {
+  background: #333333;
+  border: 0px solid rgba(0, 0, 0, 0);
+  border-radius: 0px;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 0px 0px 0px #333333, 0px 0px 0px #404040;
+  border: 0px solid rgba(51, 51, 51, 0.5);
+  height: 40px;
+  width: 5px;
+  border-radius: 0px;
+  background: #CBE86B;/*background:rgba(0,0,0,0);*/
+  cursor: pointer;
+  height: 1px;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #333333;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #404040;
+}
+/*knob*/
+.knob path {
+  stroke: none;
+  fill: #CBE86B;
+  stroke-weight: .1;
+}
+.pan + .knob path {
+  fill: #333;
+}
+.knob path:first-child {
+  fill: #333;
+}
+.knob rect {
+  fill: transparent;
+}
+.pan + .knob rect {
+  fill: #CBE86B;
+}
+/* switch */
+.checkbox {
+  position: relative;
+  display: block;
+  width: 50px !important;
+  height: 50px !important;
+  margin:0!important;
+  padding: 5px 10px 0;
+}
+.checkbox .switch {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 4px solid #333;
+  /*margin-left: 15px;*/
+  background: rgba(0,0,0,.4);
+  cursor: pointer;
+}
+.checkbox .switch.on {
+  background: green;
+}
+
+label {
+
+}
+.checkbox label {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: auto;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  /*background: rgba(0,0,0,.2);*/
+  font-size: .6rem;
+}
+
+.param label {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-size: .8rem;
+  /*background: rgba(0,0,0,.2);*/
+  text-align: center !important;
+}
+
+@media screen and (max-height: 480px), screen and (max-width: 670px) {
+  input[type=range]::-webkit-slider-thumb,
+  input[type=range]::-moz-range-thumb,
+  input[type=range]::-ms-thumb {
+    width:30px;
+  }
+}
