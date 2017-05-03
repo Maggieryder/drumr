@@ -199,7 +199,7 @@ div, ul {
   /*background: rgba(0,0,0,.2);*/
 }
 
-#mixer .param-fader {
+.param-fader {
   display: flex;
   align-items: center;
   justify-content:flex-start;
@@ -213,6 +213,10 @@ div, ul {
   position: relative;
   width: 20px;
   /*background: rgba(0,0,0,.4);*/
+}
+#controls * :focus + .meter,
+#mixer * :focus + .meter {
+  color:#CBE86B!important;
 }
 
 .checkbox label {
@@ -298,6 +302,10 @@ div, ul {
 
 .bar li .beat .note.on .status {
   background: rgba(255,0,0,.7);
+}
+
+.bar li .beat .note.now .status {
+  background: rgba(204,255,102,.5); /*#CBE86B*/
 }
 
 @media screen and (max-height: 480px), screen and (max-width: 670px) {

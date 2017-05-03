@@ -15,8 +15,8 @@
 <body>
   <div id="controls">
     <div><a id="playBtn" href="#">PLAY</a></div>
-    <div class="param"><label>TEMPO</label><input class="input-slider" name="tempo" type="range" min="30.0" max="160.0" value="120"><div id="tempoMeter" class="meter long">120 bpm</div></div>
-    <div class="param"><label>SWING</label><input class="input-slider" name="swing" type="range" min="0" max="100" value="0"><div id="swingMeter" class="meter">0%</div></div>
+    <div class="param param-fader"><label>TEMPO</label><input class="input-slider" name="tempo" type="range" min="30.0" max="160.0" value="120"><div id="tempoMeter" class="meter long">120 bpm</div></div>
+    <div class="param param-fader"><label>SWING</label><input class="input-slider" name="swing" type="range" min="0" max="100" value="0"><div id="swingMeter" class="meter">0%</div></div>
     <!--<div class="param"><label>WET MIX</label><input class="input-slider" name="wet" type="range" min="0" max="100" value="70"><div id="wetMeter" class="meter">7</div></div>
     <div class="param"><label>DRY MIX</label><input class="input-slider" name="dry" type="range" min="0" max="100" value="70"><div id="dryMeter" class="meter">7</div></div>
     <div class="param"><label>MASTER VOLUME</label><input class="input-slider" name="volume" type="range" min="0" max="100" value="70"><div id="volumeMeter" class="meter">7</div></div>-->
@@ -413,7 +413,16 @@
         <div class="params">
           <div class="name">MASTER</div>
           <div class="param param-fader">
-            <input class="input-fader" name="volume" type="range" min="0" max="100" value="70" />
+            <input class="input-fader" name="volume" type="range" min="0" max="100" value="70" list="volsettings"/>
+
+            <datalist id="volsettings">
+            	<option>0</option>
+            	<option>20</option>
+            	<option>40</option>
+            	<option>60</option>
+            	<option>80</option>
+            	<option>100</option>
+            </datalist>
             <div id="volumeMeter" class="meter">7</div>
           </div>
         </div>
