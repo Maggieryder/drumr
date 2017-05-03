@@ -117,13 +117,15 @@ function addListeners(){
   let controls = $("#controls");
   controls.find('input[name="tempo"]').on('input', updateTempo);
   controls.find('input[name="swing"]').on('input', updateSwingFactor);
-  controls.find('input[name="volume"]').on('input', updateGlobalVolume);
-  controls.find('input[name="wet"]').on('input', updateWetVolume);
-  controls.find('input[name="dry"]').on('input', updateDryVolume);
+  //controls.find('input[name="volume"]').on('input', updateGlobalVolume);
+  //controls.find('input[name="wet"]').on('input', updateWetVolume);
+  //controls.find('input[name="dry"]').on('input', updateDryVolume);
   $('.note').on(evt, onNoteTap);
   $('.mute').on(evt, onMute);
   $('.solo').on(evt, onSolo);
   $('.compressor').on(evt, toggleCompressor);
+  $('.reverb').on(evt, toggleReverb);
+  $('.delaytoggle').on(evt, toggleDelay);
   $('#playBtn').on(evt, function(e){
     e.preventDefault();
     let html = SEQUENCER.togglePlay();
@@ -133,7 +135,11 @@ function addListeners(){
   $('.delay').on('change', updateDelaySend);
   $('.volume').on('change', updateTrackVolume);
   $('.pan').on('change', updateTrackPan);
-  let delay = $("#delay");
+  let mixer = $('#mixer');
+  mixer.find('input[name="volume"]').on('input', updateGlobalVolume);
+  mixer.find('input[name="wet"]').on('input', updateWetVolume);
+  mixer.find('input[name="dry"]').on('input', updateDryVolume);
+  let delay = $('#delay');
   delay.find('input[name="time"]').on('change', updateDelayTime);
   delay.find('input[name="feedback"]').on('change', updateFeedbackGain);
   delay.find('input[name="freq"]').on('change', updateFrequency);
@@ -144,7 +150,19 @@ function addListeners(){
   compressor.find('input[name="attack"]').on('change', updateAttack);
   compressor.find('input[name="release"]').on('change', updateRelease);
 }
-
+// SEQUENCER FUNCTIONS
+function onNoteTap(e){
+  e.preventDefault();
+  let trackIndex = $(this).parent().parent().parent().parent().index();
+  let beat = $(this).parent().parent().index();
+  let subbeat = $(this).index();
+  let step = (beat*4) + subbeat;
+  $(this).toggleClass('on');
+  //console.log('trackIndex', trackIndex, 'step', step);
+  if (!SEQUENCER.running())
+    MIXER.tracks[trackIndex].triggerSample(CTX.currentTime);
+  sequenceNote(trackIndex,step);
+}
 function sequenceNote(index, step){
   sequences[index].steps[step] = sequences[index].steps[step]===0 ? 1 : 0;
   SEQUENCER.updateParams({sequences});
@@ -167,6 +185,7 @@ function updateTempo(e){
   DELAY.updateDelayTime(SEQUENCER.secondsPerBeat()*.5);
   $('#tempoMeter').html(val+' bpm');
 }
+// MIXER FUNCTIONS
 function updateGlobalVolume(e){
   let val = e.target.value;
   updateInputStyle('volume', val);
@@ -189,7 +208,30 @@ function updateWetVolume(e){
   MIXER.updateWetVolume(val/100);
   $('#wetMeter').html(Math.round(val/10));
 }
+// REVERB FUNCTIONS
+function toggleReverb(e){
+  e.preventDefault();
+  REVERB.toggleReverb(e);
+}
+function updateReverbSend(e){
+  let index = $(this).parent().parent().parent().parent().index();
+  let meter = $('.verbmeter')[index];
+  //console.log('DELAY',e.target.value);
+  MIXER.updateTrackReverb(index, e.target.value/10);
+  $(meter).html(Math.round(e.target.value));
+}
 // DELAY FUNCTIONS
+function toggleDelay(e){
+  e.preventDefault();
+  DELAY.toggleDelay(e);
+}
+function updateDelaySend(e){
+  let index = $(this).parent().parent().parent().parent().index();
+  let meter = $('.delaymeter')[index];
+  //console.log('DELAY',e.target.value);
+  MIXER.updateTrackDelay(index, e.target.value/10);
+  $(meter).html(Math.round(e.target.value));
+}
 function updateDelayTime(e){
   let val = e.target.value;
   console.log('updateDelayTime', val);
@@ -239,34 +281,34 @@ function updateRelease(e){
   COMPRESSOR.updateRelease(val/100);
   $('#releaseMeter').html(val/100);
 }
-// SEQUENCER FUNCTIONS
-function onNoteTap(e){
+function toggleCompressor(e){
   e.preventDefault();
-  let trackIndex = $(this).parent().parent().parent().parent().index();
-  let beat = $(this).parent().parent().index();
-  let subbeat = $(this).index();
-  let step = (beat*4) + subbeat;
-  $(this).toggleClass('on');
-  //console.log('trackIndex', trackIndex, 'step', step);
-  if (!SEQUENCER.running())
-    MIXER.tracks[trackIndex].triggerSample(CTX.currentTime);
-  sequenceNote(trackIndex,step);
+  COMPRESSOR.toggleCompressor(e);
 }
+// TRACK FUNCTIONS
 function onMute(e){
   e.preventDefault();
-  let index = $(this).parent().parent().parent().index();
+  let $target = $(this).parent().parent().parent();
+  switch ($target.attr('id')){
+    case 'wetmix':
+    MIXER.toggleWetMute(e);
+    break;
+    case 'drymix':
+    MIXER.toggleDryMute(e);
+    break;
+    default:
+    MIXER.toggleTrackMute($target.index());
+    break;
+  }
+  //let index = $target.index();
   //console.log('MUTE track index', index);
-  MIXER.toggleTrackMute(index);
+
 }
 function onSolo(e){
   e.preventDefault();
   let index = $(this).parent().parent().parent().index();
   //console.log('SOLO track index', index);
   MIXER.toggleTrackSolo(index);
-}
-function toggleCompressor(e){
-  e.preventDefault();
-  COMPRESSOR.toggleCompressor(e);
 }
 function updateTrackVolume(e){
   let index = $(this).parent().parent().parent().parent().index();
@@ -282,21 +324,6 @@ function updateTrackPan(e){
   MIXER.updateTrackPan(index, e.target.value*.2);
   $(meter).html(Math.round(e.target.value));
 }
-function updateDelaySend(e){
-  let index = $(this).parent().parent().parent().parent().index();
-  let meter = $('.delaymeter')[index];
-  //console.log('DELAY',e.target.value);
-  MIXER.updateTrackDelay(index, e.target.value/10);
-  $(meter).html(Math.round(e.target.value));
-}
-function updateReverbSend(e){
-  let index = $(this).parent().parent().parent().parent().index();
-  let meter = $('.verbmeter')[index];
-  //console.log('DELAY',e.target.value);
-  MIXER.updateTrackReverb(index, e.target.value/10);
-  $(meter).html(Math.round(e.target.value));
-}
-
 function updateKit(){
   // TODO load drum samples dynamically
 }

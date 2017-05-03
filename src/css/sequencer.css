@@ -79,7 +79,7 @@ div, ul {
 }
 
 #controls input {
-  width: 80px;
+  width: 120px;
 }
 
 #controls .param label {
@@ -87,6 +87,7 @@ div, ul {
   padding-top: 2px;
   width: auto;
   float: left;
+  font-size: .8rem;
   /*background: rgba(0,0,0,.4);
   font-size: .9rem;*/
 }
@@ -113,6 +114,7 @@ div, ul {
   border-radius: 10px;
   border: 4px solid #CBE86B;
   font-size: .85rem;
+  text-transform: uppercase;
   color: #CBE86B !important;
   cursor:pointer;
 }
@@ -129,7 +131,7 @@ div, ul {
   position:relative;
   display: inline-block;
   width: 100%;
-  height: 60px;
+  height: 70px;
   margin-bottom: 5px;
   /*background: rgba(0,0,0,.2);*/
   font-size: 1rem;
@@ -150,16 +152,16 @@ div, ul {
   width: 50%;
 }
 
-.track .params .param,
-.track .params .name {
+.param,
+.name {
   position: relative;
+  /*display: block;*/
   width: auto;
   height: auto;
   margin-right:15px;
 }
 
-.track .params .name {
-  display: block;
+.name {
   width: 80px;
   text-transform: uppercase;
   overflow: hidden;
@@ -168,44 +170,77 @@ div, ul {
   white-space: nowrap;
 }
 
-.track .params .param:last-child {
+.param:last-child {
   margin-right: 0;
 }
 
-.track .param label {
+.param-knob {
+  width: 60px;
+  text-align: center !important;
+}
+
+.param-knob > div:first-child {
+  margin: 0 auto;
+}
+
+.param-knob label {
   font-size: .6rem;
-  bottom: 18px;
+  margin: -6px auto;
   opacity:.7;
   z-index:-1;
 }
 
-.track .params .meter {
+.param-knob .meter {
   position: absolute;
-  bottom: 0;
+  z-index:-1;
+  top: 17px;
   width: 100%;
   font-size: .8rem;
   /*background: rgba(0,0,0,.2);*/
-  text-align: center !important;
+}
+
+#mixer .param-fader {
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+  margin-right: 0;
+}
+
+.param-fader input {
+  width: 200px;
+}
+.param-fader .meter {
+  position: relative;
+  width: 20px;
+  /*background: rgba(0,0,0,.4);*/
+}
+
+.checkbox label {
+  opacity:.7;
+}
+
+#mixer .checkbox {
+  padding-top: 10px;
 }
 
 .track * :focus + label ~ .meter {
   color:#CBE86B;
 }
 /* mute btn styles */
-.track .params .mute {
+.params .mute {
   display: block;
   background: red;
-  color: red;
+  color: #CBE86B;
   text-align: center;
-  font-size: .8rem;
+  font-size: .9rem;
   line-height: 20px;
 }
 
-.track .params .mute.on {
-  background: rgba(0,0,0,.4);
+.params .mute.on {
+  background: rgba(0,0,0,.1);
 }
 
-.track .params .mute.on:before {
+.params .mute.on:before {
   content: "x";
 }
 /* sequencer styles */

@@ -138,7 +138,7 @@ input[type=range]:focus::-ms-fill-upper {
   width: 50px !important;
   height: 50px !important;
   margin:0!important;
-  padding: 5px 10px 0;
+  padding-top: 6px;
 }
 .checkbox .switch {
   display: block;
@@ -146,8 +146,8 @@ input[type=range]:focus::-ms-fill-upper {
   height: 30px;
   border-radius: 50%;
   border: 4px solid #333;
-  /*margin-left: 15px;*/
-  background: rgba(0,0,0,.4);
+  background: rgba(0,0,0,.1);
+  margin: 0 auto;
   cursor: pointer;
 }
 .checkbox .switch.on {
@@ -155,27 +155,20 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 label {
-
+  position: relative;
+  display:block;
+  width: auto;
 }
 .checkbox label {
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: auto;
-  left: 0;
-  bottom: 0;
   text-align: center;
-  /*background: rgba(0,0,0,.2);*/
   font-size: .6rem;
-}
-
-.param label {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  font-size: .8rem;
   /*background: rgba(0,0,0,.2);*/
-  text-align: center !important;
+}
+.param label {
+  position: relative;
+  display:block;
+  width: auto;
+  /*background: rgba(0,0,0,.2);*/
 }
 
 @media screen and (max-height: 480px), screen and (max-width: 670px) {

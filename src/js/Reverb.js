@@ -5,6 +5,7 @@
     this.convolver = ctx.createConvolver();
     this.convolverGain = ctx.createGain();
     this.sources = [];
+    this.isOn = false;
   }
   Reverb.prototype.init = function(){
     //console.log('REVERB INIT beatsecs');
@@ -26,7 +27,7 @@
         self.convolver.buffer = buffer;
         self.convolverGain.gain.value = .7;
         // do the connexions
-        self.connect();
+        //self.connect();
       });
     };
     request.send();
@@ -62,6 +63,12 @@
     });
     this.convolverGain.disconnect(this.convolver);
     //this.convolver.disconnect(masterGain);
+  }
+  Reverb.prototype.toggleReverb = function(e){
+    console.log('toggleReverb', e.target);
+    e.target.classList.toggle('on');
+    this.isOn = !this.isOn;
+    this.isOn ? this.connect() : this.disconnect();
   }
   window.Reverb = Reverb;
 }(window));

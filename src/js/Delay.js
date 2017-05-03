@@ -5,6 +5,7 @@
     this.feedback = ctx.createGain();
     this.filter = ctx.createBiquadFilter();
     this.sources = [];
+    this.isOn = false;
   }
   Delay.prototype.init = function(){
     console.log('DELAY INIT beatsecs', this.delay.delayTime.value);
@@ -16,12 +17,12 @@
     this.updateDelayTime(.25);
     this.updateFeedbackGain(.5);
     this.updateFrequency(1000);
-    this.connect();
+    //this.connect();
   }
   Delay.prototype.addSource = function(src){
     //console.log('DELAY ADD SOURCE', src);
     this.sources.push(src);
-    this.sources[this.sources.length-1].connect(this.delay);
+    //this.sources[this.sources.length-1].connect(this.delay);
   }
   Delay.prototype.delayNode = function(){
     return this.delay;
@@ -45,16 +46,24 @@
     this.disconnect();
   }
   Delay.prototype.connect = function(){
+    let self = this;
     this.sources.forEach(function(src){
       console.log('CONNECT source', src);
-      src.connect(this.delay);
+      src.connect(self.delay);
     });
   }
   Delay.prototype.disconnect = function(){
+    let self = this;
     this.sources.forEach(function(src){
       console.log('DISCONNECT source', src);
-      src.disconnect(this.delay);
+      src.disconnect(self.delay);
     });
+  }
+  Delay.prototype.toggleDelay = function(e){
+    console.log('toggleDelay', e.target);
+    e.target.classList.toggle('on');
+    this.isOn = !this.isOn;
+    this.isOn ? this.connect() : this.disconnect();
   }
   window.Delay = Delay;
 }(window));

@@ -22,6 +22,8 @@
     // Connect master dry and wet to finalOutput.
     this.masterDry.connect(this.finalOutput);
     this.masterWet.connect(this.finalOutput);
+    this.dryMute = false;
+    this.wetMute = false;
     // Connect to speakers
     this.finalOutput.connect(ctx.destination);
     // FX
@@ -55,13 +57,25 @@
 
   Mixer.prototype.updateGlobalVolume = function(val){
     this.finalOutput.gain.value = val;
-    //console.log('masterDry', this.masterDry.gain.value);
   }
   Mixer.prototype.updateDryVolume = function(val){
     this.masterDry.gain.value = val;
   }
   Mixer.prototype.updateWetVolume = function(val){
     this.masterWet.gain.value =  val;
+  }
+  Mixer.prototype.toggleWetMute = function(e){
+    console.log('toggleWetMute', e.target);
+    e.target.classList.toggle('on');
+    this.wetMute = !this.wetMute;
+    this.wetMute ? this.reverb.convolverNode().disconnect(this.masterWet) : this.reverb.convolverNode().connect(this.masterWet);
+    this.wetMute ? this.delay.delayNode().disconnect(this.masterWet) : this.delay.delayNode().connect(this.masterWet);
+  }
+  Mixer.prototype.toggleDryMute = function(e){
+    console.log('toggleDryMute', e.target);
+    e.target.classList.toggle('on');
+    this.dryMute = !this.dryMute;
+    this.dryMute ? this.masterDry.disconnect(this.finalOutput) : this.masterDry.connect(this.finalOutput);
   }
   Mixer.prototype.toggleTrackMute = function(index){
     //console.log('toggleTrackMute', index);
