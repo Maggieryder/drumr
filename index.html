@@ -13,423 +13,388 @@
   <script type="text/javascript" src="src/js/plugins/knob.js"></script>
 </head>
 <body>
-  <div id="controls">
-    <div><a id="playBtn" href="#">PLAY</a></div>
-    <div class="param param-fader"><label>TEMPO</label><input class="input-slider" name="tempo" type="range" min="30.0" max="160.0" value="120"><div id="tempoMeter" class="meter long">120 bpm</div></div>
-    <div class="param param-fader"><label>SWING</label><input class="input-slider" name="swing" type="range" min="0" max="100" value="0"><div id="swingMeter" class="meter">0%</div></div>
-    <!--<div class="param"><label>WET MIX</label><input class="input-slider" name="wet" type="range" min="0" max="100" value="70"><div id="wetMeter" class="meter">7</div></div>
-    <div class="param"><label>DRY MIX</label><input class="input-slider" name="dry" type="range" min="0" max="100" value="70"><div id="dryMeter" class="meter">7</div></div>
-    <div class="param"><label>MASTER VOLUME</label><input class="input-slider" name="volume" type="range" min="0" max="100" value="70"><div id="volumeMeter" class="meter">7</div></div>-->
-    <!--<div class="checkbox"><div class="switch mute"></div><label>MUTE</label></div>-->
-  </div>
-
-  <div id="mySequencer">
-    <div class="track">
-      <div class="params">
-        <div class="name">TRACK</div>
-        <div class="param param-knob">
-          <!--<div class="minus">-</div>
-          <input class="input-slider verb" type="range" min="0" max="10" value="0">
-          <div class="plus">+</div>-->
-          <input class="input-knob verb" type="range" min="0" max="10" value="0" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
-          <label>REVERB</label>
-          <div class="meter verbmeter">0</div>
-        </div>
-        <div class="param param-knob">
-          <!--<div class="minus">-</div>
-          <input class="input-slider delay" type="range" min="0" max="10" value="0">
-          <div class="plus">+</div>-->
-          <input class="input-knob delay" type="range" min="0" max="10" value="0" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
-          <label>DELAY</label>
-          <div class="meter delaymeter">0</div>
-        </div>
-        <div class="param param-knob">
-          <!--<div class="minus">-</div>
-          <input class="input-slider volume" type="range" min="0" max="10" value="7">
-          <div class="plus">+</div>-->
-          <input class="input-knob volume" type="range" min="0" max="10" value="7" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
-          <label>GAIN</label>
-          <div class="meter trackmeter">7</div>
-        </div>
-        <div class="param param-knob">
-          <!--<div class="minus centered">L</div>
-          <input class="input-slider pan" type="range" min="-5" max="5" value="0">
-          <div class="plus centered">R</div>-->
-          <input class="input-knob pan" type="range" min="-5" max="5" value="0" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
-          <label>PAN</label>
-          <!--<div class="meter panmeter">0</div>-->
-        </div>
-        <div class="checkbox"><div class="switch mute"></div><label>MUTE</label></div>
-        <div class="checkbox"><div class="switch solo"></div><label>SOLO</label></div>
+  <div id="wrapper">
+    <div id="myMixer" class="expand">
+      <div class="controls">
+        <div><a id="hideBtn" href="#"></a></div>
       </div>
-      <ul class="bar">
-        <li>
-          <ul class="beat">
-            <li class="note on"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-          </ul>
-        </li>
-        <li>
-          <ul class="beat">
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-          </ul>
-        </li>
-        <li>
-          <ul class="beat">
-            <li class="note on"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-          </ul>
-        </li>
-        <li>
-          <ul class="beat">
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <div class="track">
-      <div class="params">
-        <div class="name">TRACK</div>
-        <div class="param param-knob">
-          <!--<div class="minus">-</div>
-          <input class="input-slider verb" type="range" min="0" max="10" value="0">
-          <div class="plus">+</div>-->
-          <input class="input-knob verb" type="range" min="0" max="10" value="0" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
-          <label>REVERB</label>
-          <div class="meter verbmeter">0</div>
-        </div>
-        <div class="param param-knob">
-          <!--<div class="minus">-</div>
-          <input class="input-slider delay" type="range" min="0" max="10" value="0">
-          <div class="plus">+</div>-->
-          <input class="input-knob delay" type="range" min="0" max="10" value="0" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
-          <label>DELAY</label>
-          <div class="meter delaymeter">0</div>
-        </div>
-        <div class="param param-knob">
-          <!--<div class="minus">-</div>
-          <input class="input-slider volume" type="range" min="0" max="10" value="7">
-          <div class="plus">+</div>-->
-          <input class="input-knob volume" type="range" min="0" max="10" value="7" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
-          <label>GAIN</label>
-          <div class="meter trackmeter">7</div>
-        </div>
-        <div class="param param-knob">
-          <!--<div class="minus centered">L</div>
-          <input class="input-slider pan" type="range" min="-5" max="5" value="0">
-          <div class="plus centered">R</div>-->
-          <input class="input-knob pan" type="range" min="-5" max="5" value="0" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
-          <label>PAN</label>
-          <!--<div class="meter panmeter">0</div>-->
-        </div>
-        <div class="checkbox"><div class="switch mute"></div><label>MUTE</label></div>
-        <div class="checkbox"><div class="switch solo"></div><label>SOLO</label></div>
-      </div>
-      <ul class="bar">
-        <li>
-          <ul class="beat">
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-          </ul>
-        </li>
-        <li>
-          <ul class="beat">
-            <li class="note on"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-          </ul>
-        </li>
-        <li>
-          <ul class="beat">
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-          </ul>
-        </li>
-        <li>
-          <ul class="beat">
-            <li class="note on"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <div class="track">
-      <div class="params">
-        <div class="name">TRACK</div>
-        <div class="param param-knob">
-          <!--<div class="minus">-</div>
-          <input class="input-slider verb" type="range" min="0" max="10" value="0">
-          <div class="plus">+</div>-->
-          <input class="input-knob verb" type="range" min="0" max="10" value="0" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
-          <label>REVERB</label>
-          <div class="meter verbmeter">0</div>
-        </div>
-        <div class="param param-knob">
-          <!--<div class="minus">-</div>
-          <input class="input-slider delay" type="range" min="0" max="10" value="0">
-          <div class="plus">+</div>-->
-          <input class="input-knob delay" type="range" min="0" max="10" value="0" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
-          <label>DELAY</label>
-          <div class="meter delaymeter">0</div>
-        </div>
-        <div class="param param-knob">
-          <!--<div class="minus">-</div>
-          <input class="input-slider volume" type="range" min="0" max="10" value="7">
-          <div class="plus">+</div>-->
-          <input class="input-knob volume" type="range" min="0" max="10" value="7" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
-          <label>GAIN</label>
-          <div class="meter trackmeter">7</div>
-        </div>
-        <div class="param param-knob">
-          <!--<div class="minus centered">L</div>
-          <input class="input-slider pan" type="range" min="-5" max="5" value="0">
-          <div class="plus centered">R</div>-->
-          <input class="input-knob pan" type="range" min="-5" max="5" value="0" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
-          <label>PAN</label>
-          <!--<div class="meter panmeter">0</div>-->
-        </div>
-        <div class="checkbox"><div class="switch mute"></div><label>MUTE</label></div>
-        <div class="checkbox"><div class="switch solo"></div><label>SOLO</label></div>
-      </div>
-      <ul class="bar">
-        <li>
-          <ul class="beat">
-            <li class="note on"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note on"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-          </ul>
-        </li>
-        <li>
-          <ul class="beat">
-            <li class="note on"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note on"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-          </ul>
-        </li>
-        <li>
-          <ul class="beat">
-            <li class="note on"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note on"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-          </ul>
-        </li>
-        <li>
-          <ul class="beat">
-            <li class="note on"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <div class="track">
-      <div class="params">
-        <div class="name">TRACK</div>
-        <div class="param param-knob">
-          <!--<div class="minus">-</div>
-          <input class="input-slider verb" type="range" min="0" max="10" value="0">
-          <div class="plus">+</div>-->
-          <input class="input-knob verb" type="range" min="0" max="10" value="0" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
-          <label>REVERB</label>
-          <div class="meter verbmeter">0</div>
-        </div>
-        <div class="param param-knob">
-          <!--<div class="minus">-</div>
-          <input class="input-slider delay" type="range" min="0" max="10" value="0">
-          <div class="plus">+</div>-->
-          <input class="input-knob delay" type="range" min="0" max="10" value="0" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
-          <label>DELAY</label>
-          <div class="meter delaymeter">0</div>
-        </div>
-        <div class="param param-knob">
-          <!--<div class="minus">-</div>
-          <input class="input-slider volume" type="range" min="0" max="10" value="7">
-          <div class="plus">+</div>-->
-          <input class="input-knob volume" type="range" min="0" max="10" value="7" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
-          <label>GAIN</label>
-          <div class="meter trackmeter">7</div>
-        </div>
-        <div class="param param-knob">
-          <!--<div class="minus centered">L</div>
-          <input class="input-slider pan" type="range" min="-5" max="5" value="0">
-          <div class="plus centered">R</div>-->
-          <input class="input-knob pan" type="range" min="-5" max="5" value="0" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
-          <label>PAN</label>
-          <!--<div class="meter panmeter">0</div>-->
-        </div>
-        <div class="checkbox"><div class="switch mute"></div><label>MUTE</label></div>
-        <div class="checkbox"><div class="switch solo"></div><label>SOLO</label></div>
-      </div>
-      <ul class="bar">
-        <li>
-          <ul class="beat">
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-          </ul>
-        </li>
-        <li>
-          <ul class="beat">
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-          </ul>
-        </li>
-        <li>
-          <ul class="beat">
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-          </ul>
-        </li>
-        <li>
-          <ul class="beat">
-            <li class="note"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-            <li class="note on"><div class="status"></div></li>
-            <li class="note"><div class="status"></div></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <div class="track" id="reverb">
-      <div class="params">
-        <div class="name">REVERB</div>
-        <div class="param">
-          OPTIONS
-        </div>
-        <div class="checkbox">
-          <div class="switch reverb"></div><label>ON/OFF</label>
-        </div>
-      </div>
-    </div>
-    <div class="track" id="delay">
-      <div class="params">
-        <div class="name">DELAY</div>
-        <div class="param param-knob">
-          <input class="input-knob" name="time" type="range" min="0" max="100" value="50" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
-          <label>TIME</label>
-          <div class="meter" id="timeMeter">0.5</div>
-        </div>
-        <div class="param param-knob">
-          <input class="input-knob" name="feedback" type="range" min="0" max="95" value="50" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
-          <label>FEEDBACK</label>
-          <div class="meter" id="feedMeter">0.5</div>
-        </div>
-        <div class="param param-knob">
-          <input class="input-knob" name="freq" type="range" min="0" max="40" value="10" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
-          <label>FREQUENCY</label>
-          <div class="meter" id="freqMeter">1000</div>
-        </div>
-        <div class="checkbox">
-          <div class="switch delaytoggle"></div><label>ON/OFF</label>
-        </div>
-      </div>
-    </div>
-    <div class="track" id="compressor">
-      <div class="params">
-        <div class="name">COMPRESSOR</div>
-        <div class="param param-knob">
-          <input class="input-knob" name="threshold" type="range" min="-100" max="0" value="50" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
-          <label>THRESHOLD</label>
-          <div class="meter" id="thresholdMeter">-24</div>
-        </div>
-        <div class="param param-knob">
-          <input class="input-knob" name="knee" type="range" min="0" max="40" value="30" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
-          <label>KNEE</label>
-          <div class="meter" id="kneeMeter">30</div>
-        </div>
-        <div class="param param-knob">
-          <input class="input-knob" name="ratio" type="range" min="1" max="20" value="12" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
-          <label>RATIO</label>
-          <div class="meter" id="ratioMeter">12</div>
-        </div>
-        <div class="param param-knob">
-          <input class="input-knob" name="attack" type="range" min="0" max="100" value=".01" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
-          <label>ATTACK</label>
-          <div class="meter" id="attackMeter">0.01</div>
-        </div>
-        <div class="param param-knob">
-          <input class="input-knob" name="release" type="range" min="1" max="100" value="25" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
-          <label>RELEASE</label>
-          <div class="meter" id="releaseMeter">0.25</div>
-        </div>
-        <div class="checkbox">
-          <!--<input type="checkbox" name="compressor" value="0" id="cmprsr" class="switch compressor"/> <label for="cmprsr">ON/OFF</label>-->
-          <div class="switch compressor"></div><label>ON/OFF</label>
-        </div>
-      </div>
-    </div>
-    <div id="mixer">
-      <div class="track" id="wetmix">
+      <div class="tracks">
+        <div class="track">
+          <div class="params">
+            <div class="name">TRACK</div>
+            <div class="param param-knob">
+              <input class="input-knob verb" type="range" min="0" max="10" value="0" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
+              <label>REVERB</label>
+              <div class="meter verbmeter">0</div>
+            </div>
+            <div class="param param-knob">
+              <input class="input-knob delay" type="range" min="0" max="10" value="0" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
+              <label>DELAY</label>
+              <div class="meter delaymeter">0</div>
+            </div>
+            <div class="param param-knob">
+              <input class="input-knob volume" type="range" min="0" max="10" value="7" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
+              <label>GAIN</label>
+              <div class="meter trackmeter">7</div>
+            </div>
+            <div class="param param-knob">
+              <input class="input-knob pan" type="range" min="-5" max="5" value="0" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
+              <label>PAN</label>
+              <!--<div class="meter panmeter">0</div>-->
+            </div>
+            <div class="checkbox"><div class="switch mute"></div><label>MUTE</label></div>
+            <div class="checkbox"><div class="switch solo"></div><label>SOLO</label></div>
+          </div>
+        </div><!--END TRACK-->
+        <div class="track">
+          <div class="params">
+            <div class="name">TRACK</div>
+            <div class="param param-knob">
+              <input class="input-knob verb" type="range" min="0" max="10" value="0" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
+              <label>REVERB</label>
+              <div class="meter verbmeter">0</div>
+            </div>
+            <div class="param param-knob">
+              <input class="input-knob delay" type="range" min="0" max="10" value="0" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
+              <label>DELAY</label>
+              <div class="meter delaymeter">0</div>
+            </div>
+            <div class="param param-knob">
+              <input class="input-knob volume" type="range" min="0" max="10" value="7" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
+              <label>GAIN</label>
+              <div class="meter trackmeter">7</div>
+            </div>
+            <div class="param param-knob">
+              <input class="input-knob pan" type="range" min="-5" max="5" value="0" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
+              <label>PAN</label>
+              <!--<div class="meter panmeter">0</div>-->
+            </div>
+            <div class="checkbox"><div class="switch mute"></div><label>MUTE</label></div>
+            <div class="checkbox"><div class="switch solo"></div><label>SOLO</label></div>
+          </div>
+        </div><!--END TRACK-->
+        <div class="track">
+          <div class="params">
+            <div class="name">TRACK</div>
+            <div class="param param-knob">
+              <input class="input-knob verb" type="range" min="0" max="10" value="0" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
+              <label>REVERB</label>
+              <div class="meter verbmeter">0</div>
+            </div>
+            <div class="param param-knob">
+              <input class="input-knob delay" type="range" min="0" max="10" value="0" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
+              <label>DELAY</label>
+              <div class="meter delaymeter">0</div>
+            </div>
+            <div class="param param-knob">
+              <input class="input-knob volume" type="range" min="0" max="10" value="7" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
+              <label>GAIN</label>
+              <div class="meter trackmeter">7</div>
+            </div>
+            <div class="param param-knob">
+              <input class="input-knob pan" type="range" min="-5" max="5" value="0" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
+              <label>PAN</label>
+              <!--<div class="meter panmeter">0</div>-->
+            </div>
+            <div class="checkbox"><div class="switch mute"></div><label>MUTE</label></div>
+            <div class="checkbox"><div class="switch solo"></div><label>SOLO</label></div>
+          </div>
+        </div><!--END TRACK-->
+        <div class="track">
+          <div class="params">
+            <div class="name">TRACK</div>
+            <div class="param param-knob">
+              <input class="input-knob verb" type="range" min="0" max="10" value="0" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
+              <label>REVERB</label>
+              <div class="meter verbmeter">0</div>
+            </div>
+            <div class="param param-knob">
+              <input class="input-knob delay" type="range" min="0" max="10" value="0" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
+              <label>DELAY</label>
+              <div class="meter delaymeter">0</div>
+            </div>
+            <div class="param param-knob">
+              <input class="input-knob volume" type="range" min="0" max="10" value="7" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
+              <label>GAIN</label>
+              <div class="meter trackmeter">7</div>
+            </div>
+            <div class="param param-knob">
+              <input class="input-knob pan" type="range" min="-5" max="5" value="0" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
+              <label>PAN</label>
+              <!--<div class="meter panmeter">0</div>-->
+            </div>
+            <div class="checkbox"><div class="switch mute"></div><label>MUTE</label></div>
+            <div class="checkbox"><div class="switch solo"></div><label>SOLO</label></div>
+          </div>
+        </div><!--END TRACK-->
+      </div><!-- END TRACKS -->
+      <div class="track" id="reverb">
         <div class="params">
-          <div class="name">WET MIX</div>
-          <div class="param param-fader">
-            <input class="input-fader" name="wet" type="range" min="0" max="100" value="70" />
-            <div id="wetMeter" class="meter">7</div>
+          <div class="name">REVERB</div>
+          <div class="param param-option">
+            OPTIONS
           </div>
           <div class="checkbox">
-            <div class="switch mute"></div><label>MUTE</label>
+            <div class="switch reverb"></div><label>ON/OFF</label>
           </div>
         </div>
       </div>
-      <div class="track" id="drymix">
+      <div class="track" id="delay">
         <div class="params">
-          <div class="name">DRY MIX</div>
-          <div class="param param-fader">
-            <input class="input-fader" name="dry" type="range" min="0" max="100" value="70" />
-            <div id="dryMeter" class="meter">7</div>
+          <div class="name">DELAY</div>
+          <div class="param param-knob">
+            <input class="input-knob" name="time" type="range" min="0" max="100" value="50" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
+            <label>TIME</label>
+            <div class="meter" id="timeMeter">0.5</div>
+          </div>
+          <div class="param param-knob">
+            <input class="input-knob" name="feedback" type="range" min="0" max="95" value="50" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
+            <label>FEEDBACK</label>
+            <div class="meter" id="feedMeter">0.5</div>
+          </div>
+          <div class="param param-knob">
+            <input class="input-knob" name="freq" type="range" min="0" max="40" value="10" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
+            <label>FREQUENCY</label>
+            <div class="meter" id="freqMeter">1000</div>
           </div>
           <div class="checkbox">
-            <div class="switch mute"></div><label>MUTE</label>
+            <div class="switch delaytoggle"></div><label>ON/OFF</label>
           </div>
         </div>
       </div>
-      <div class="track" id="global">
+      <div class="track" id="compressor">
         <div class="params">
-          <div class="name">MASTER</div>
-          <div class="param param-fader">
-            <input class="input-fader" name="volume" type="range" min="0" max="100" value="70" list="volsettings"/>
-
-            <datalist id="volsettings">
-            	<option>0</option>
-            	<option>20</option>
-            	<option>40</option>
-            	<option>60</option>
-            	<option>80</option>
-            	<option>100</option>
-            </datalist>
-            <div id="volumeMeter" class="meter">7</div>
+          <div class="name">COMPRESSOR</div>
+          <div class="param param-knob">
+            <input class="input-knob" name="threshold" type="range" min="-100" max="0" value="50" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
+            <label>THRESHOLD</label>
+            <div class="meter" id="thresholdMeter">-24</div>
+          </div>
+          <div class="param param-knob">
+            <input class="input-knob" name="knee" type="range" min="0" max="40" value="30" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
+            <label>KNEE</label>
+            <div class="meter" id="kneeMeter">30</div>
+          </div>
+          <div class="param param-knob">
+            <input class="input-knob" name="ratio" type="range" min="1" max="20" value="12" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
+            <label>RATIO</label>
+            <div class="meter" id="ratioMeter">12</div>
+          </div>
+          <div class="param param-knob">
+            <input class="input-knob" name="attack" type="range" min="0" max="100" value=".01" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
+            <label>ATTACK</label>
+            <div class="meter" id="attackMeter">0.01</div>
+          </div>
+          <div class="param param-knob">
+            <input class="input-knob" name="release" type="range" min="1" max="100" value="25" data-width="50" data-height="50" data-angleOffset="220" data-angleRange="280" />
+            <label>RELEASE</label>
+            <div class="meter" id="releaseMeter">0.25</div>
+          </div>
+          <div class="checkbox">
+            <!--<input type="checkbox" name="compressor" value="0" id="cmprsr" class="switch compressor"/> <label for="cmprsr">ON/OFF</label>-->
+            <div class="switch compressor"></div><label>ON/OFF</label>
           </div>
         </div>
       </div>
-    </div>
+      <div id="mixer">
+        <div class="track" id="wetmix">
+          <div class="params">
+            <div class="name">WET MIX</div>
+            <div class="param param-fader">
+              <input class="input-fader" name="wet" type="range" min="0" max="100" value="70" />
+              <div id="wetMeter" class="meter">7</div>
+            </div>
+            <div class="checkbox">
+              <div class="switch mute"></div><label>MUTE</label>
+            </div>
+          </div>
+        </div>
+        <div class="track" id="drymix">
+          <div class="params">
+            <div class="name">DRY MIX</div>
+            <div class="param param-fader">
+              <input class="input-fader" name="dry" type="range" min="0" max="100" value="70" />
+              <div id="dryMeter" class="meter">7</div>
+            </div>
+            <div class="checkbox">
+              <div class="switch mute"></div><label>MUTE</label>
+            </div>
+          </div>
+        </div>
+        <div class="track" id="global">
+          <div class="params">
+            <div class="name">MASTER</div>
+            <div class="param param-fader">
+              <input class="input-fader" name="volume" type="range" min="0" max="100" value="70" list="volsettings"/>
 
-  </div>
+              <datalist id="volsettings">
+              	<option>0</option>
+              	<option>20</option>
+              	<option>40</option>
+              	<option>60</option>
+              	<option>80</option>
+              	<option>100</option>
+              </datalist>
+              <div id="volumeMeter" class="meter">7</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!--END MIXER-->
+    <div id="mySequencer" class="contract">
+      <div class="controls">
+        <div><a id="playBtn" href="#">PLAY</a></div>
+        <div class="param param-fader"><label>TEMPO</label><input class="input-slider" name="tempo" type="range" min="30.0" max="160.0" value="120"><div id="tempoMeter" class="meter long">120 bpm</div></div>
+        <div class="param param-fader"><label>SWING</label><input class="input-slider" name="swing" type="range" min="0" max="100" value="0"><div id="swingMeter" class="meter">0%</div></div>
+      </div>
+      <div class="tracks">
+        <div class="track">
+          <ul class="bar">
+            <li>
+              <ul class="beat">
+                <li class="note on"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+              </ul>
+            </li>
+            <li>
+              <ul class="beat">
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+              </ul>
+            </li>
+            <li>
+              <ul class="beat">
+                <li class="note on"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+              </ul>
+            </li>
+            <li>
+              <ul class="beat">
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="track">
+          <ul class="bar">
+            <li>
+              <ul class="beat">
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+              </ul>
+            </li>
+            <li>
+              <ul class="beat">
+                <li class="note on"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+              </ul>
+            </li>
+            <li>
+              <ul class="beat">
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+              </ul>
+            </li>
+            <li>
+              <ul class="beat">
+                <li class="note on"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="track">
+          <ul class="bar">
+            <li>
+              <ul class="beat">
+                <li class="note on"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note on"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+              </ul>
+            </li>
+            <li>
+              <ul class="beat">
+                <li class="note on"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note on"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+              </ul>
+            </li>
+            <li>
+              <ul class="beat">
+                <li class="note on"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note on"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+              </ul>
+            </li>
+            <li>
+              <ul class="beat">
+                <li class="note on"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="track">
+          <ul class="bar">
+            <li>
+              <ul class="beat">
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+              </ul>
+            </li>
+            <li>
+              <ul class="beat">
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+              </ul>
+            </li>
+            <li>
+              <ul class="beat">
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+              </ul>
+            </li>
+            <li>
+              <ul class="beat">
+                <li class="note"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+                <li class="note on"><div class="status"></div></li>
+                <li class="note"><div class="status"></div></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div><!-- END TRACKS -->
+    </div><!-- END SEQUNECER -->
+  </div><!-- END WRAPPER -->
   <script src="src/js/Sample.js"></script>
   <script src="src/js/Delay.js"></script>
   <script src="src/js/Reverb.js"></script>

@@ -114,9 +114,9 @@ function addListeners(){
   let evt = isMobile.any ? 'touchstart' : 'click';
   alert('isMobile: '+ isMobile.any+' evt is: '+evt);
   //$('window').on(evt, initSound);
-  let controls = $("#controls");
-  controls.find('input[name="tempo"]').on('input', updateTempo);
-  controls.find('input[name="swing"]').on('input', updateSwingFactor);
+  let seqControls = $("#mySequencer .controls");
+  seqControls.find('input[name="tempo"]').on('input', updateTempo);
+  seqControls.find('input[name="swing"]').on('input', updateSwingFactor);
   //controls.find('input[name="volume"]').on('input', updateGlobalVolume);
   //controls.find('input[name="wet"]').on('input', updateWetVolume);
   //controls.find('input[name="dry"]').on('input', updateDryVolume);
@@ -312,6 +312,7 @@ function onSolo(e){
 }
 function updateTrackVolume(e){
   let index = $(this).parent().parent().parent().parent().index();
+  console.log('>>>>', $(this).parent().parent().parent().parent());
   let meter = $('.trackmeter')[index];
   console.log('VOLUME',$(this).val(),'index',index);
   MIXER.updateTrackVolume(index, e.target.value/10);
