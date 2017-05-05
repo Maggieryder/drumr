@@ -5,6 +5,7 @@ const DELAY = new Delay(CTX);
 const REVERB = new Reverb(CTX);
 const MIXER = new Mixer(CTX);
 const COMPRESSOR = new Compressor(CTX);
+const VISUALIZER = new Visualizer(CTX);
 
 /* MOVE  THIS INTO UI.js??? */
 /* NOT BEING USED
@@ -67,6 +68,17 @@ function initDrumr(buffers){
   addListeners();
 }
 
+function hasGetUserMedia() {
+  return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+            navigator.mozGetUserMedia || navigator.msGetUserMedia);
+}
+
+if (hasGetUserMedia()) {
+  alert('getUserMedia is WORKING!!!')
+} else {
+  alert('getUserMedia() is not supported in your browser');
+}
+
 function initAudioCtx(){
   try {
     // Fix up for prefixing
@@ -112,7 +124,7 @@ function loadBuffers(kit){
 
 function addListeners(){
   let evt = isMobile.any ? 'touchstart' : 'click';
-  alert('isMobile: '+ isMobile.any+' evt is: '+evt);
+  //alert('isMobile: '+ isMobile.any+' evt is: '+evt);
   //$('window').on(evt, initSound);
   let seqControls = $("#mySequencer .controls");
   seqControls.find('input[name="tempo"]').on('input', updateTempo);

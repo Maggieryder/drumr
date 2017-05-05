@@ -345,11 +345,11 @@ div, ul {
 .bar li .beat .note:first-child .status {
   width: 80%;
   height: 80%;
-  background: rgba(0,0,0,.4);
+  background: rgba(0,0,0,.3);
 }
 
 .bar li .beat .note:hover .status{
-  background: rgba(0,0,0,.7);
+  background: rgba(0,0,0,.4);
   cursor: pointer;
 }
 

@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="msapplication-tap-highlight" content="no">
   <title>DRUM KIT</title>
   <link rel="stylesheet" href="./src/css/ui.css">
   <link rel="stylesheet" href="./src/css/sequencer.css">
@@ -132,7 +133,12 @@
         <div class="params">
           <div class="name">REVERB</div>
           <div class="param param-option">
-            OPTIONS
+            <select>
+              <option value="blank">five columns long</option>
+              <option class="white" value="white">really large cathedral</option>
+              <option class="red" value="red">nice drum room</option>
+              <option class="blue" value="blue">large wide echo hall</option>
+            </select>
           </div>
           <div class="checkbox">
             <div class="switch reverb"></div><label>ON/OFF</label>
@@ -225,7 +231,7 @@
           <div class="params">
             <div class="name">MASTER</div>
             <div class="param param-fader">
-              <input class="input-fader" name="volume" type="range" min="0" max="100" value="70" list="volsettings"/>
+              <input id="master" class="input-fader" name="volume" type="range" min="0" max="100" value="70" step="1" list="volsettings"/>
 
               <datalist id="volsettings">
               	<option>0</option>
@@ -246,6 +252,14 @@
         <div><a id="playBtn" href="#">PLAY</a></div>
         <div class="param param-fader"><label>TEMPO</label><input class="input-slider" name="tempo" type="range" min="30.0" max="160.0" value="120"><div id="tempoMeter" class="meter long">120 bpm</div></div>
         <div class="param param-fader"><label>SWING</label><input class="input-slider" name="swing" type="range" min="0" max="100" value="0"><div id="swingMeter" class="meter">0%</div></div>
+        <div class="param param-option">
+          <select>
+            <option value="load" selected>load kit</option>
+            <option value="wildSoulKit">wild soul kit</option>
+            <option value="feelinKit">feelin kit</option>
+            <option class="blue" value="blue">808</option>
+          </select>
+        </div>
       </div>
       <div class="tracks">
         <div class="track">
@@ -402,6 +416,7 @@
   <script src="src/js/Track.js"></script>
   <script src="src/js/Mixer.js"></script>
   <script src="src/js/Sequencer.js"></script>
+  <script src="src/js/Visualizer.js"></script>
   <script src="src/js/Ui.js"></script>
   <script src="src/js/drumr.js"></script>
   <script>
