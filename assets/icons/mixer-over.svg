@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <style>.dark{fill:#333;}.lite{fill:#CBE86B;}</style>
+  </defs>
+  <title>mixer</title>
+  <g id="4bff19a7-6b64-451e-90d3-6e07fd8e58e8" data-name="Layer 2">
+    <rect class="lite" y="4" width="32" height="4"/>
+    <rect class="lite" y="14" width="32" height="4"/>
+    <rect class="lite" y="24" width="32" height="4"/>
+    <rect class="lite" x="15" width="4" height="12"/>
+    <rect class="lite" x="22" y="10" width="4" height="12"/>
+    <rect class="lite" x="10" y="20" width="4" height="12"/>
+  </g>
+</svg>

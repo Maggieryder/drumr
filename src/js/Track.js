@@ -7,11 +7,12 @@
     this.sample;
     this.instrumentName;
 
-    this.outputGain = this.context.createGain();
+    this.outputGain = ctx.createGain();
     this.sendGains = [];
-    this.sendGains[0] = this.context.createGain();
-    this.sendGains[1] = this.context.createGain();
-    this.panner = this.context.createPanner();
+    this.sendGains[0] = ctx.createGain();
+    this.sendGains[1] = ctx.createGain();
+    this.panner = ctx.createPanner();
+    this.meter = ctx.createScriptProcessor(2048, 1, 1);
 
     this.panner.panningModel = 'equalpower';
     this.panner.distanceModel = 'linear';
@@ -31,6 +32,7 @@
     this.solo = false;
   }
   Track.prototype.init = function(destination, reverb, delay){
+    let self = this;
     this.destination = destination;
     this.reverb = reverb;
     this.delay = delay;
@@ -41,6 +43,41 @@
     this.updateVolume(.7);
     this.updateSendGain(0,0);
     this.updateSendGain(1,0);
+    this.meter.onaudioprocess = function(e) { self.processAudio(e) };
+    this.renderMeter();
+  }
+
+  Track.prototype.processAudio = function(e) {
+    //console.log('processAudio', e);
+    let leftBuffer = e.inputBuffer.getChannelData(0);
+    this.checkClipping(leftBuffer);
+    /*
+    var rightBuffer = e.inputBuffer.getChannelData(1);
+    this.checkClipping(rightBuffer);
+    */
+  }
+  Track.prototype.checkClipping = function(buffer) {
+    let isClipping = false;
+    // Iterate through buffer to check if any of the |values| exceeds 1.
+    for (var i = 0; i < buffer.length; i++) {
+      var absValue = Math.abs(buffer[i]);
+      if (absValue >= .33) {
+        isClipping = true;
+        break;
+      }
+    }
+    //console.log('isClipping', isClipping);
+    if (isClipping) {
+      this.lastClipTime = new Date();
+    }
+  }
+  Track.prototype.renderMeter = function() {
+    let self = this;
+    let muteBtn = document.querySelectorAll('.mute')[this.id];
+    let now = new Date()
+    let didRecentlyClip = (now - this.lastClipTime) < 100;
+    muteBtn.classList.toggle('clip', didRecentlyClip);
+    requestAnimationFrame(function() { self.renderMeter() });
   }
   Track.prototype.assignId = function(id){
     this.id = id;
@@ -91,12 +128,16 @@
     //console.log('track connect', this.getId());
     this.outputGain.connect(this.sendGains[0]);
     this.outputGain.connect(this.sendGains[1]);
+    this.outputGain.connect(this.meter);
+    this.meter.connect(this.destination);
     this.outputGain.connect(this.destination);
   }
   Track.prototype.disconnect = function(){
     //console.log('track disconnect', this.getId());
     this.outputGain.disconnect(this.sendGains[0]);
     this.outputGain.disconnect(this.sendGains[1]);
+    this.outputGain.disconnect(this.meter);
+    this.meter.disconnect(this.destination);
     this.outputGain.disconnect(this.destination);
   }
   window.Track = Track;

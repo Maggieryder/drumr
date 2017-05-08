@@ -1,0 +1,13 @@
+<svg id="togglePlayPause" data-name="Layer 3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 18">
+  <defs>
+    <style>.c71b825d-8545-4da2-9b90-5468112e40bd{fill:#333;}</style>
+  </defs>
+  <title>pause</title>
+  <g id="pause-svg" data-name="pause">
+    <rect class="c71b825d-8545-4da2-9b90-5468112e40bd" width="5" height="18"/>
+    <rect class="c71b825d-8545-4da2-9b90-5468112e40bd" x="10" width="5" height="18"/>
+  </g>
+  <g id="play-svg" data-name="play">
+    <polygon class="dark" points="8.1 4.68 0 0 0 9.35 8.1 4.68"/>
+  </g>
+</svg>

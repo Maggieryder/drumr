@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 17">
+	<defs>
+		<style>.\39 c7adb93-1669-461b-8762-74a79b45b372{fill:#333;}
+		</style>
+	</defs>
+	<title>bar</title>
+	<g id="6f89150f-0875-481e-b5ff-8d8f27fa216e" data-name="Layer 1">
+		<rect class="9c7adb93-1669-461b-8762-74a79b45b372" width="32" height="1"/>
+		<rect class="9c7adb93-1669-461b-8762-74a79b45b372" y="4" width="32" height="1"/>
+		<rect class="9c7adb93-1669-461b-8762-74a79b45b372" y="8" width="32" height="1"/>
+		<rect class="9c7adb93-1669-461b-8762-74a79b45b372" y="12" width="32" height="1"/>
+		<rect class="9c7adb93-1669-461b-8762-74a79b45b372" y="16" width="32" height="1"/>
+		<rect class="9c7adb93-1669-461b-8762-74a79b45b372" x="-8" y="8" width="17" height="1" transform="translate(-8 9) rotate(-90)"/>
+		<rect class="9c7adb93-1669-461b-8762-74a79b45b372" x="23" y="8" width="17" height="1" transform="translate(23 40) rotate(-90)"/>
+		<ellipse class="9c7adb93-1669-461b-8762-74a79b45b372" cx="8.5" cy="12.5" rx="2.5" ry="1.5"/>
+		<ellipse class="9c7adb93-1669-461b-8762-74a79b45b372" cx="16.5" cy="8.5" rx="2.5" ry="1.5"/>
+		<ellipse class="9c7adb93-1669-461b-8762-74a79b45b372" cx="24.5" cy="4.5" rx="2.5" ry="1.5"/>
+	</g>
+</svg>

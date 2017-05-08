@@ -50,29 +50,25 @@ div, ul {
   width: 94%;
   height: auto;
 }
-#myMixer,
+
 #mySequencer {
   position: relative;
-  float: left;
-  margin: 0 auto;
   height: auto;
+  width: 100%;
+
 }
-#myMixer {
-  width:10%;
+#mySequencer .params {
+  width:0%;
 }
-#myMixer.expand {
-  width:40%;
+#mySequencer.expand-mixer .params {
+  width: 414px;
 }
-#mySequencer {
-  width: 90%;
-}
-#mySequencer.contract {
-  width: 60%;
+
+#mySequencer.hide-bars .bar {
+  display: none;
 }
 
 /* controller styles */
-
-
 .controls {
   position:relative;
   display:block;
@@ -105,25 +101,33 @@ div, ul {
 }
 
 .checkbox {
-  display: none;
   float:left;
 }
 
 .controls a {
   width: 50px;
-  height: 100%;
+  height: 50px;
   margin-right:40px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items:center;
-  border-radius: 10px;
-  border: 4px solid #CBE86B;
+  border: 3px solid #333;
   font-size: .85rem;
   text-transform: uppercase;
   text-decoration:none;
-  color: #CBE86B;
+  background-color: rgba(0, 0, 0, .1);
+  color: #333;
+  fill: #333;
   cursor:pointer;
+  float:left;
+}
+
+.controls a:hover {
+  background-color: #333;
+  /*border-color: #CBE86B;*/
+  color: #CBE86B;
+  fill: #CBE86B;
 }
 
 .controls .param label {
@@ -150,49 +154,50 @@ div, ul {
   width: 80px;
 }
 
-#playBtn,
-#hideBtn  {
-  float:left;
-  width: 50px!important;
-  height: 50px!important;
-  margin-right:40px;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items:center;
-  border-radius: 10px;
-  border: 4px solid #CBE86B;
-  font-size: .85rem;
-  text-transform: uppercase;
-  color: #CBE86B !important;
-  cursor:pointer;
+#playBtn {
+  padding-left:5px;
 }
-#hideBtn:before {
-  content:'show';
+#playBtn.playing {
+  padding-left:0px;
 }
-#myMixer.expand #hideBtn:before {
-  content:'hide';
+#playBtn #play-svg {
+  display: block;
 }
+#playBtn #pause-svg {
+  display: none;
+}
+#playBtn.playing #pause-svg {
+  display: block;
+}
+#playBtn.playing #play-svg {
+  display: none;
+}
+
 /* bar & beats */
 .track {
   position:relative;
-  display: inline-block;
+  display: flex;
   width: 100%;
   height: 70px;
   margin-bottom: 5px;
   /*background: rgba(0,0,0,.2);*/
-  font-size: 1rem;
+  font-size: .9rem;
+  align-items: center;
+  justify-content:flex-start;
+  color: #333;
 }
 /* mixer styles */
-.track .params {
+.params {
   position: relative;
-  display: flex;
+  display: none;
   width: 100%;
   height: 100%;
   align-items: center;
   justify-content:flex-start;
-  /*padding: 0 10px;*/
-  color: #333;
+}
+
+#mySequencer.expand-mixer .params {
+  display: flex;
 }
 
 .param,
@@ -202,18 +207,7 @@ div, ul {
   width: auto;
   height: auto;
   margin-right:15px;
-}
 
-.param {
-  display: none;
-}
-#myMixer.expand .param-knob,
-#myMixer.expand .checkbox {
-  display: block;
-}
-#myMixer.expand .param-fader,
-#myMixer.expand .param-option {
-  display: flex;
 }
 
 .name {
@@ -293,6 +287,13 @@ div, ul {
   line-height: 20px;
 }
 
+.params .mute.clip {
+  background: #ff9900;
+}
+.params .mute.max {
+  background: yellow;
+}
+
 .params .mute.on {
   background: rgba(0,0,0,.1);
 }
@@ -302,10 +303,7 @@ div, ul {
 }
 /* sequencer styles */
 .track .bar {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
+  flex-grow: 1;
   height: 100%;
 }
 

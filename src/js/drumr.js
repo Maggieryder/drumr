@@ -140,8 +140,19 @@ function addListeners(){
   $('.delaytoggle').on(evt, toggleDelay);
   $('#playBtn').on(evt, function(e){
     e.preventDefault();
-    let html = SEQUENCER.togglePlay();
-    $(this).html(html);
+    //let html = SEQUENCER.togglePlay();
+    SEQUENCER.togglePlay();
+    $(this).toggleClass('playing');
+  });
+  $('#toggleMixer').on(evt, function(e){
+    e.preventDefault();
+    $('#mySequencer').toggleClass('expand-mixer');
+
+  });
+  $('#toggleBeats').on(evt, function(e){
+    e.preventDefault();
+    $('#mySequencer').toggleClass('hide-bars');
+
   });
   $('.verb').on('change', updateReverbSend);
   $('.delay').on('change', updateDelaySend);
