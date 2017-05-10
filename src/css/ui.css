@@ -163,10 +163,17 @@ select {
   -o-text-overflow: ellipsis;
   white-space: nowrap;
   -webkit-appearance:none;
+  -moz-appearance: none;
+  appearance: none;
   /*box-shadow:inset 0 0 10px 0 rgba(0,0,0,0.9);*/
   outline:none;
 }
-
+select:focus {
+	outline:none;
+}
+select::-ms-expand {
+    display: none;
+}
 select > svg {
   fill: currentColor;
 }
@@ -178,7 +185,8 @@ select:hover {
 
 select option {
   border-radius: none;
-  margin-left:40px;
+  margin-left:10px;
+  outline: none;
 }
 
 select * {

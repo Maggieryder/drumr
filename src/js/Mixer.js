@@ -149,10 +149,13 @@
     this.delayMix.gain.value = val;
   }
   */
+  Mixer.prototype.getTracks = function(){
+    return this.tracks;
+  }
   Mixer.prototype.addTrack = function(track){
     track.init(this.masterDry, this.masterWet, this.masterWet);
-    track.updateSendGain(0,0); // reverb
-    track.updateSendGain(1,0); // delay
+    //track.updateSendGain(0,0); // reverb
+    //track.updateSendGain(1,0); // delay
     this.reverb.addSource(track.auxSend(0));
     this.delay.addSource(track.auxSend(1));
     this.tracks.push(track);
@@ -160,6 +163,13 @@
   Mixer.prototype.removeTrackAtIndex = function(index){
     this.tracks[index].disconnect();
     this.tracks.splice(index,1);
+  }
+  Mixer.prototype.clearTracks = function(){
+    let i = this.tracks.length;
+    while (i--){
+      this.tracks[i].disconnect();
+      this.tracks.pop();
+    }
   }
   Mixer.prototype.updateTrackVolume = function(index, val){
     this.tracks[index].updateVolume(val);

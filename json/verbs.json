@@ -1,0 +1,151 @@
+[
+  {
+    "name":"Block Inside",
+    "smpl":"IMreverbs/BlockInside.wav"
+  },
+
+  {
+    "name":"Cement Blocks 1",
+    "smpl":"IMreverbs/CementBlocks-1.wav"
+  },
+  {
+    "name":"Cement Blocks 2",
+    "smpl":"IMreverbs/CementBlocks-2.wav"
+  },
+  {
+    "name":"Chateau de Logne Outside",
+    "smpl":"IMreverbs/Chateau-de-Logne-Outside.wav"
+  },
+  {
+    "name":"Conic Long Echo Hall",
+    "smpl":"IMreverbs/ConicLongEchoHall.wav"
+  },
+  {
+    "name":"Large Long Echo Hall",
+    "smpl":"IMreverbs/LargeLongEchoHall.wav"
+  },
+  {
+    "name":"Large Wide Echo Hall",
+    "smpl":"IMreverbs/LargeWideEchoHall.wav"
+  },
+  {
+    "name":"Greek 7 Echo Hall",
+    "smpl":"IMreverbs/Greek-7-EchoHall.wav"
+  },
+  {
+    "name":"Bottle Hall",
+    "smpl":"IMreverbs/BottleHall.wav"
+  },
+  {
+    "name":"Large Bottle Hall",
+    "smpl":"IMreverbs/LargeBottleHall.wav"
+  },
+  {
+    "name":"Scala Milan Opera Hall",
+    "smpl":"IMreverbs/ScalaMilanOperaHall.wav"
+  },
+  {
+    "name":"Deep Space",
+    "smpl":"IMreverbs/DeepSpace.wav"
+  },
+  {
+    "name":"On a Star",
+    "smpl":"IMreverbs/On-a-Star.wav"
+  },
+  {
+    "name":"Derlon Sanctuary",
+    "smpl":"IMreverbs/DerlonSanctuary.wav"
+  },
+  {
+    "name":"Direct Cabinet N1",
+    "smpl":"IMreverbs/DirectCabinetN1.wav"
+  },
+  {
+    "name":"Direct Cabinet N2",
+    "smpl":"IMreverbs/DirectCabinetN2.wav"
+  },
+  {
+    "name":"Direct Cabinet N3",
+    "smpl":"IMreverbs/DirectCabinetN3.wav"
+  },
+  {
+    "name":"Direct Cabinet N4",
+    "smpl":"IMreverbs/DirectCabinetN4.wav"
+  },
+  {
+    "name":"Five Columns",
+    "smpl":"IMreverbs/FiveColumns.wav"
+  },
+  {
+    "name":"Five Columns Long",
+    "smpl":"IMreverbs/FiveColumnsLong.wav"
+  },
+  {
+    "name":"French 18th Century Salon",
+    "smpl":"IMreverbs/French18thCenturySalon.wav"
+  },
+  {
+    "name":"Going Home",
+    "smpl":"IMreverbs/GoingHome.wav"
+  },
+  {
+    "name":"Highly Damped Large Room",
+    "smpl":"IMreverbs/HighlyDampedLargeRoom.wav"
+  },
+  {
+    "name":"Small Drum Room",
+    "smpl":"IMreverbs/SmallDrumRoom.wav"
+  },
+  {
+    "name":"Nice Drum Room",
+    "smpl":"IMreverbs/NiceDrumRoom.wav"
+  },
+  {
+    "name":"RubyRoom",
+    "smpl":"IMreverbs/RubyRoom.wav"
+  },
+  {
+    "name":"Trig Room",
+    "smpl":"IMreverbs/TrigRoom.wav"
+  },
+  {
+    "name":"Vocal Duo",
+    "smpl":"IMreverbs/VocalDuo.wav"
+  },
+  {
+    "name":"Masonic Lodge",
+    "smpl":"IMreverbs/MasonicLodge.wav"
+  },
+  {
+    "name":"Musik vereinsaal",
+    "smpl":"IMreverbs/Musikvereinsaal.wav"
+  },
+  {
+    "name":"Parking Garage",
+    "smpl":"IMreverbs/ParkingGarage.wav"
+  },
+  {
+    "name":"Rays",
+    "smpl":"IMreverbs/Rays.wav"
+  },
+  {
+    "name":"Right Glass Triangle",
+    "smpl":"IMreverbs/RightGlassTriangle.wav"
+  },
+  {
+    "name":"Small Prehistoric Cave",
+    "smpl":"IMreverbs/SmallPrehistoricCave.wav"
+  },
+  {
+    "name":"St Nicolaes Church",
+    "smpl":"IMreverbs/StNicolaesChurch.wav"
+  },
+  {
+    "name":"The Silo",
+    "smpl":"IMreverbs/TheSilo.wav"
+  },
+  {
+    "name":"TheSilo Revised",
+    "smpl":"IMreverbs/TheSilo-Revised.wav"
+  }
+]

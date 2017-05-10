@@ -130,6 +130,20 @@ div, ul {
   fill: #CBE86B;
 }
 
+.controls a.toggle-bar{
+  border-right: none;
+  margin-right: 0;
+}
+
+.controls a.toggle-bar:last-child {
+  border-right: 3px solid #333;
+  margin-right: 40px;
+}
+
+.controls .param-option {
+  margin-right: 40px;
+}
+
 .controls .param label {
   position: relative;
   padding-top: 2px;
@@ -356,7 +370,7 @@ div, ul {
 }
 
 .bar li .beat .note.now .status {
-  background: rgba(204,255,102,.5); /*#CBE86B*/
+  background: #ff9900;/*rgba(204,255,102,.5); /*#CBE86B*/
 }
 
 @media screen and (max-height: 480px), screen and (max-width: 670px) {

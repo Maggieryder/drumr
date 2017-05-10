@@ -86,7 +86,7 @@
     return this.id;
   }
   Track.prototype.assignSample = function(buffer){
-    this.sample = new Sample(this.context, buffer, this.panner, this.outputGain);
+    this.sample = new Sample(this.context, buffer, this.panner, this.outputGain,this.sendGains[0],this.sendGains[1]);
   }
   Track.prototype.triggerSample = function(time){
     this.sample.trigger(time);
@@ -126,16 +126,16 @@
   }
   Track.prototype.connect = function(){
     //console.log('track connect', this.getId());
-    this.outputGain.connect(this.sendGains[0]);
-    this.outputGain.connect(this.sendGains[1]);
+    //this.outputGain.connect(this.sendGains[0]);
+    //this.outputGain.connect(this.sendGains[1]);
     this.outputGain.connect(this.meter);
     this.meter.connect(this.destination);
     this.outputGain.connect(this.destination);
   }
   Track.prototype.disconnect = function(){
     //console.log('track disconnect', this.getId());
-    this.outputGain.disconnect(this.sendGains[0]);
-    this.outputGain.disconnect(this.sendGains[1]);
+    //this.outputGain.disconnect(this.sendGains[0]);
+    //this.outputGain.disconnect(this.sendGains[1]);
     this.outputGain.disconnect(this.meter);
     this.meter.disconnect(this.destination);
     this.outputGain.disconnect(this.destination);

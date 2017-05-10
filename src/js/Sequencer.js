@@ -67,6 +67,13 @@
   Sequencer.prototype.addTrack = function(track){
     this.tracks.push(track);
   }
+  Sequencer.prototype.clearTracks = function(){
+    /*let i = this.tracks.length;
+    while (i--){
+      this.tracks[i].pop();
+    }*/
+    this.tracks = [];
+  }
   // e.g. use sequencer.updateParams({sequences});
   Sequencer.prototype.updateParams = function(obj){
     for (let prop in obj){

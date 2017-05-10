@@ -18,12 +18,12 @@
     <div id="mySequencer" class="expand-mixer">
       <div class="controls">
         <div>
-          <a id="toggleMixer" href="#">
+          <a class="toggle-mixer" href="#">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-              <g id="4bff19a7-6b64-451e-90d3-6e07fd8e58e8" data-name="Layer 2">
-                <rect y="4" width="32" height="4"/>
-                <rect y="14" width="32" height="4"/>
-                <rect y="24" width="32" height="4"/>
+              <g id="mixer-settings" data-name="mixer-settings">
+                <rect y="5" width="32" height="2"/>
+                <rect y="15" width="32" height="2"/>
+                <rect y="25" width="32" height="2"/>
                 <rect x="15" width="4" height="12"/>
                 <rect x="22" y="10" width="4" height="12"/>
                 <rect x="10" y="20" width="4" height="12"/>
@@ -46,33 +46,42 @@
             </svg>
           </a>
         </div>
-        <div>
-          <a id="toggleBeats" href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 17" width="50" height="30">
-            	<g id="6f89150f-0875-481e-b5ff-8d8f27fa216e" data-name="Layer 1">
-            		<rect class="9c7adb93-1669-461b-8762-74a79b45b372" width="32" height="1"/>
-            		<rect class="9c7adb93-1669-461b-8762-74a79b45b372" y="4" width="32" height="1"/>
-            		<rect class="9c7adb93-1669-461b-8762-74a79b45b372" y="8" width="32" height="1"/>
-            		<rect class="9c7adb93-1669-461b-8762-74a79b45b372" y="12" width="32" height="1"/>
-            		<rect class="9c7adb93-1669-461b-8762-74a79b45b372" y="16" width="32" height="1"/>
-            		<!--<rect class="9c7adb93-1669-461b-8762-74a79b45b372" x="-8" y="8" width="17" height="1" transform="translate(-8 9) rotate(-90)"/>
-            		<rect class="9c7adb93-1669-461b-8762-74a79b45b372" x="23" y="8" width="17" height="1" transform="translate(23 40) rotate(-90)"/>-->
-            		<ellipse class="9c7adb93-1669-461b-8762-74a79b45b372" cx="8.5" cy="12.5" rx="2.5" ry="1.5"/>
-            		<ellipse class="9c7adb93-1669-461b-8762-74a79b45b372" cx="16.5" cy="8.5" rx="2.5" ry="1.5"/>
-            		<ellipse class="9c7adb93-1669-461b-8762-74a79b45b372" cx="24.5" cy="4.5" rx="2.5" ry="1.5"/>
-            	</g>
-            </svg>
-          </a>
-        </div>
         <div class="param param-fader"><label>TEMPO</label><input class="input-slider" name="tempo" type="range" min="30.0" max="160.0" value="120"><div id="tempoMeter" class="meter long">120 bpm</div></div>
         <div class="param param-fader"><label>SWING</label><input class="input-slider" name="swing" type="range" min="0" max="100" value="0"><div id="swingMeter" class="meter">0%</div></div>
         <div class="param param-option">
-          <select>
-            <option value="load" selected>load kit</option>
-            <option value="wildSoulKit">wild soul kit</option>
-            <option value="feelinKit">feelin kit</option>
-            <option class="blue" value="blue">808</option>
+          <select id='kits'>
+            <!--<option value="load" selected>dynamic content</option>-->
           </select>
+        </div>
+        <div>
+          <a class="toggle-bar" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 21" width="50" height="35">
+            	<g id="bar1" data-name="bar1">
+            		<rect y="0" width="32" height="1"/>
+            		<rect y="5" width="32" height="1"/>
+            		<rect y="10" width="32" height="1"/>
+            		<rect y="15" width="32" height="1"/>
+            		<rect y="20" width="32" height="1"/>
+            		<ellipse cx="8.5" cy="15.5" rx="2.5" ry="2.5"/>
+            		<ellipse cx="16.5" cy="10.5" rx="2.5" ry="2.5"/>
+            		<ellipse cx="24.5" cy="5.5" rx="2.5" ry="2.5"/>
+            	</g>
+            </svg>
+          </a>
+          <a class="toggle-bar" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 21" width="50" height="35">
+            	<g id="bar2" data-name="bar2">
+            		<rect y="0" width="32" height="1"/>
+            		<rect y="5" width="32" height="1"/>
+            		<rect y="10" width="32" height="1"/>
+            		<rect y="15" width="32" height="1"/>
+            		<rect y="20" width="32" height="1"/>
+            		<ellipse cx="8.5" cy="15.5" rx="2.5" ry="2.5"/>
+            		<ellipse cx="16.5" cy="10.5" rx="2.5" ry="2.5"/>
+            		<ellipse cx="24.5" cy="5.5" rx="2.5" ry="2.5"/>
+            	</g>
+            </svg>
+          </a>
         </div>
       </div>
       <div class="tracks">
@@ -325,7 +334,7 @@
         <div class="name">REVERB</div>
         <div class="params">
           <div class="param param-option">
-            <select>
+            <select id="verbs">
               <option value="blank">five columns long</option>
               <option class="white" value="white">really large cathedral</option>
               <option class="red" value="red">nice drum room</option>
@@ -452,6 +461,8 @@
   <script src="src/js/Ui.js"></script>
   <script src="src/js/drumr.js"></script>
   <script>
+
+  let jsonToLoad;
     // set up knobs
     function setUI(){
       let tracks = document.getElementsByClassName('track');
@@ -464,6 +475,19 @@
       }
     }
     setUI();
+  //buildOptionLists
+
+    function setOptions(eleID, arr){
+      let selectElement = $('#'+eleID);
+      selectElement.empty();
+      $.each(arr, function(index, value) {
+       var option = $('<option></option>');
+       option.attr('value', index);
+       option.text(arr[index].name);
+       selectElement.append(option);
+     });
+    }
+
     //stop bouncy page in ios
     let firstMove;
     $(document).on('touchstart', function(e) {
@@ -479,13 +503,21 @@
     );
     // doc ready
     $( document ).ready(function() {
-        let kit = [
-          {name:'kick', smple:'assets/triton/FeelinKit/FK_BD_08.wav'},
-          {name:'snare', smple:'assets/triton/FeelinKit/FK_SNR_03.wav'},
-          {name:'hihat', smple:'assets/triton/FeelinKit/FK_HH_05.wav'},
-          {name:'openhihat', smple:'assets/triton/FeelinKit/FK_CYM_03.wav'}
-        ];
-        loadBuffers(kit);
+      jsonToLoad = 2;
+      $.getJSON("json/kits.json", function(json) {
+        setOptions('kits', json);
+        initLib('kits', json);
+        jsonToLoad--;
+        if (jsonToLoad === 0) initDrumr();
+      });
+
+      $.getJSON("json/verbs.json", function(json) {
+        setOptions('verbs', json);
+        initLib('verbs', json);
+        jsonToLoad--;
+        if (jsonToLoad === 0) initDrumr();
+      });
+
     });
   </script>
 

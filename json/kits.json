@@ -1,22 +1,22 @@
 [
   {
     "name":"Feelin Kit",
-    "path":"./triton/FeelinKit/",
+    "path":"triton/FeelinKit/",
     "voices": [
-        {"name":"kick", "smple":"FK_BD_08.wav", "prettyname":"KICK"},
-        {"name":"snr", "smple":"FK_SNR_03.wav", "prettyname":"SNARE"},
-        {"name":"hh", "smple":"FK_HH_03.wav", "prettyname":"HIHAT"},
-        {"name":"ohh", "smple":"FK_CYM_03.wav", "prettyname":"OPEN HIHAT"}
+        {"name":"kick", "smple":"FK_BD_08.wav"},
+        {"name":"snare", "smple":"FK_SNR_03.wav"},
+        {"name":"hihat", "smple":"FK_HH_05.wav"},
+        {"name":"open hihat", "smple":"FK_CYM_03.wav"}
     ]
   },
   {
     "name":"Wild Soul Kit",
-    "path":"./triton/WildSoulKit/",
+    "path":"triton/WildSoulKit/",
     "voices": [
-      {"name":"kick", "smple":"WSK_BD_03.wav", "prettyname":"KICK"},
-      {"name":"snr", "smple":"WSK_SNR_08.wav", "prettyname":"SNARE"},
-      {"name":"hh", "smple":"WSK_HH_03.wav", "prettyname":"HIHAT"},
-      {"name":"ohh", "smple":"WSK_CYM_03.wav", "prettyname":"OPEN HIHAT"}
+      {"name":"kick", "smple":"WSK_BD_03.wav"},
+      {"name":"snare", "smple":"WSK_SNR_08.wav"},
+      {"name":"tambourine", "smple":"WSK_HH_03.wav"},
+      {"name":"open hihat", "smple":"WSK_HH_12.wav"}
     ]
   }
 ]

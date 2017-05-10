@@ -7,6 +7,8 @@ const MIXER = new Mixer(CTX);
 const COMPRESSOR = new Compressor(CTX);
 const VISUALIZER = new Visualizer(CTX);
 
+let LIB = {kits:[],verbs:[]}
+
 /* MOVE  THIS INTO UI.js??? */
 /* NOT BEING USED
 var sheet = document.createElement('style'),
@@ -43,23 +45,21 @@ sequences[1] = {steps:[0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0], sample: null } //snr
 sequences[2] = {steps:[1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,0], sample: null }  //hh
 sequences[3] = {steps:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0], sample: null }  //ohh
 
-function initDrumr(buffers){
+function initLib(name, arr){
+  LIB[name] = arr;
+}
+
+function initDrumr(){
   console.log('START', sequences[0]);
+  //LIB.kits = obj;
   SEQUENCER.init();
   REVERB.init();
-  REVERB.loadImpulse('assets/IMreverbs/FiveColumnsLong.wav'); // Currently hard coded - TODO make this dynamic
+  REVERB.loadImpulse('assets/'+LIB.verbs[0].smpl);
   DELAY.init();
   MIXER.addFX(REVERB,DELAY);
   MIXER.addCompressor(COMPRESSOR);
-
-  for (let i= 0; i<buffers.length;i++){
-    let track = new Track(CTX);
-    track.assignId(i);
-    track.assignSample(buffers[i].buffer);
-    track.assignInstrumentName(i, buffers[i].name);
-    MIXER.addTrack(track);
-    SEQUENCER.addTrack(track);
-  }
+  //assignTracks(buffers);
+  loadBuffers(LIB.kits[0], assignTracks);
   updateInputStyle('tempo', (90/130)*100);//((120-30)/(160-30))*100)
   updateInputStyle('swing', 0);
   updateInputStyle('wet', 70);
@@ -68,15 +68,36 @@ function initDrumr(buffers){
   addListeners();
 }
 
+function assignTracks(buffers){
+  MIXER.clearTracks();
+  SEQUENCER.clearTracks();
+  for (let i= 0; i<buffers.length;i++){
+    let track = new Track(CTX);
+    track.assignId(i);
+    track.assignSample(buffers[i].buffer);
+    track.assignInstrumentName(i, buffers[i].name);
+    MIXER.addTrack(track);
+    SEQUENCER.addTrack(track);
+  }
+}
+
+function assignSamples(buffers){
+  let tracks = MIXER.getTracks();
+  for (let i= 0; i<buffers.length;i++){
+    tracks[i].assignSample(buffers[i].buffer);
+    tracks[i].assignInstrumentName(i, buffers[i].name);
+  }
+}
+
 function hasGetUserMedia() {
   return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
             navigator.mozGetUserMedia || navigator.msGetUserMedia);
 }
 
 if (hasGetUserMedia()) {
-  alert('getUserMedia is WORKING!!!')
+  //alert('getUserMedia is WORKING!!!')
 } else {
-  alert('getUserMedia() is not supported in your browser');
+  //alert('getUserMedia() is not supported in your browser');
 }
 
 function initAudioCtx(){
@@ -103,21 +124,24 @@ function loadSample(context, url, callback) {
   request.onload = function() {
     context.decodeAudioData(request.response, function(buffer) {
       callback(buffer);
-    });
+    },
+    function(e){ alert("Error with decoding audio data", e ); });
   };
   request.send();
 }
 
-function loadBuffers(kit){
-  let buffers = [];
-  samplesToLoad = kit.length -1;
-  for (let i = 0;i<kit.length;i++){
-    buffers[i] = {name:kit[i].name,buffer:{}};
-    loadSample(CTX, kit[i].smple, function(buffer){
+function loadBuffers(kit, callback){
+  let buffers = [],
+  path = kit.path,
+  voices = kit.voices;
+  samplesToLoad = voices.length -1;
+  for (let i = 0;i<voices.length;i++){
+    buffers[i] = {name:voices[i].name,buffer:{}};
+    loadSample(CTX, 'assets/'+ path + voices[i].smple, function(buffer){
       //console.log(buffer);
       buffers[i].buffer = buffer;
       //console.log('samplesToLoad', samplesToLoad);
-      samplesToLoad === 0 ? initDrumr(buffers) : samplesToLoad --;
+      samplesToLoad === 0 ? callback(buffers) : samplesToLoad --;
     });
   }
 }
@@ -144,15 +168,23 @@ function addListeners(){
     SEQUENCER.togglePlay();
     $(this).toggleClass('playing');
   });
-  $('#toggleMixer').on(evt, function(e){
+  $('.toggle-mixer').on(evt, function(e){
     e.preventDefault();
     $('#mySequencer').toggleClass('expand-mixer');
 
   });
-  $('#toggleBeats').on(evt, function(e){
+  $('.toggle-bar').on(evt, function(e){
     e.preventDefault();
     $('#mySequencer').toggleClass('hide-bars');
 
+  });
+  $('#kits').change(function(){
+    console.log('KITS option change', $(this).val());
+    loadBuffers(LIB.kits[$(this).val()], assignSamples);
+  });
+  $('#verbs').change(function(){
+    console.log('VERBS option change', $(this).val());
+    REVERB.loadImpulse('assets/'+LIB.verbs[$(this).val()].smpl);``
   });
   $('.verb').on('change', updateReverbSend);
   $('.delay').on('change', updateDelaySend);
