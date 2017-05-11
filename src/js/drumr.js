@@ -53,9 +53,9 @@ function initDrumr(){
   console.log('START', sequences[0]);
   //LIB.kits = obj;
   SEQUENCER.init();
-  REVERB.init();
-  REVERB.loadImpulse('assets/'+LIB.verbs[0].smpl);
-  DELAY.init();
+  //REVERB.init();
+  //REVERB.loadImpulse('assets/'+LIB.verbs[0].smpl);
+  //DELAY.init();
   MIXER.addFX(REVERB,DELAY);
   MIXER.addCompressor(COMPRESSOR);
   //assignTracks(buffers);
@@ -82,6 +82,7 @@ function assignTracks(buffers){
 }
 
 function assignSamples(buffers){
+  console.log('buffers', buffers);
   let tracks = MIXER.getTracks();
   for (let i= 0; i<buffers.length;i++){
     tracks[i].assignSample(buffers[i].buffer);

@@ -1,12 +1,12 @@
 !(function(window){
   'use strict';
-  function Sample(ctx, buffer, panner, destination, reverb, delay){
+  function Sample(ctx, buffer, panner, output, reverb, delay){
     this.context = ctx;
     this.buffer = buffer;
     this.panner = panner;
     this.reverb = reverb;
     this.delay = delay;
-    this.destination = destination;
+    this.output = output;
   }
 
   Sample.prototype.init = function(){
@@ -15,7 +15,7 @@
     this.source.connect(this.panner);
     this.panner.connect(this.reverb);
     this.panner.connect(this.delay);
-    this.panner.connect(this.destination);
+    this.panner.connect(this.output);
   }
 
   Sample.prototype.trigger = function(time){

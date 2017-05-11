@@ -5,6 +5,7 @@
     this.context = ctx;
     this.id;
     this.sample;
+    this.sourceNode;
     this.instrumentName;
 
     this.outputGain = ctx.createGain();
@@ -26,16 +27,16 @@
     this.panner.coneOuterGain = 0;*/
 
     this.destination;
-    this.reverb;
-    this.delay;
+    this.reverbNode;
+    this.delayNode;
     this.mute = false;
     this.solo = false;
   }
-  Track.prototype.init = function(destination, reverb, delay){
+  Track.prototype.init = function(destination, reverbNode, delayNode){
     let self = this;
     this.destination = destination;
-    this.reverb = reverb;
-    this.delay = delay;
+    this.reverbNode = reverbNode;
+    this.delayNode = delayNode;
     // connect it all up!
     this.connect();
     // default settings
@@ -126,16 +127,16 @@
   }
   Track.prototype.connect = function(){
     //console.log('track connect', this.getId());
-    //this.outputGain.connect(this.sendGains[0]);
-    //this.outputGain.connect(this.sendGains[1]);
+    this.sendGains[0].connect(this.reverbNode);
+    this.sendGains[1].connect(this.delayNode);
     this.outputGain.connect(this.meter);
     this.meter.connect(this.destination);
     this.outputGain.connect(this.destination);
   }
   Track.prototype.disconnect = function(){
     //console.log('track disconnect', this.getId());
-    //this.outputGain.disconnect(this.sendGains[0]);
-    //this.outputGain.disconnect(this.sendGains[1]);
+    this.sendGains[0].disconnect(this.reverbNode);
+    this.sendGains[1].disconnect(this.delayNode);
     this.outputGain.disconnect(this.meter);
     this.meter.disconnect(this.destination);
     this.outputGain.disconnect(this.destination);
