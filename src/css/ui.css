@@ -143,6 +143,12 @@ input[type=range]:focus::-ms-fill-upper {
   background: transparent;
 }
 
+label {
+  position: relative;
+  display:block;
+  width: auto;
+}
+
 select {
   background-image:url(../../assets/icons/arrow-down.svg);
   background-repeat:no-repeat;
@@ -262,20 +268,10 @@ option {
   background: rgba(0,255,102,.8); /*#00FF66;*/
 }
 
-label {
-  position: relative;
-  display:block;
-  width: auto;
-}
 .checkbox label {
   text-align: center;
   font-size: .6rem;
-  /*background: rgba(0,0,0,.2);*/
-}
-.param label {
-  position: relative;
-  display:block;
-  width: auto;
+  opacity:.7;
   /*background: rgba(0,0,0,.2);*/
 }
 

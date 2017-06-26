@@ -53,6 +53,7 @@ function initDrumr(){
   console.log('START', sequences[0]);
   //LIB.kits = obj;
   SEQUENCER.init();
+  SEQUENCER.updateParams({sequences});
   //REVERB.init();
   //REVERB.loadImpulse('assets/'+LIB.verbs[0].smpl);
   //DELAY.init();
